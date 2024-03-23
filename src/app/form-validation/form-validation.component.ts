@@ -23,7 +23,7 @@ export class FormValidationComponent {
       phone: new FormControl(null, Validators.required),
       age: new FormControl(null, [Validators.required, Validators.min(16), Validators.max(65)]),
       postcode: new FormControl(null, Validators.required),
-      description: new FormControl(null, Validators.required),
+      description: new FormControl(null, [Validators.required, Validators.minLength(150)]),
       size: new FormControl(null, Validators.required),
       color: new FormControl('White'),
       condition: new FormControl(null, Validators.required),
