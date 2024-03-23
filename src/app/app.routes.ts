@@ -8,22 +8,30 @@ export const routes: Routes = [
     {
         path: '',
         component: CryptoCurrencyComponent,
-        title: 'Crypto Currency'
+        data: {
+            title: 'Crypto Currency'
+        }
     },
     {
         path: 'todo',
         component: TodoComponent,
-        title: 'To Do List'
+        data: {
+            title: 'To Do List'
+        }
     },
     {
         path: 'code-validator',
         component: CodeValidatorComponent,
-        title: 'Code Validator'
+        data: {
+            title: 'Code Validator'
+        }
     },
     {
         path: 'form-validation',
         component: FormValidationComponent,
-        title: 'Form Validation'
+        data: {
+            title: 'Form Validation'
+        }
     },
     {
         path: '**',
