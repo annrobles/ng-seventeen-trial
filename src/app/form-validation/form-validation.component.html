@@ -1,4 +1,8 @@
 <form [formGroup]="formValidation" (ngSubmit)="onSubmit()" class="w-50">
+    <section class="form-buttons mt-3 mb-3">
+        <button type="submit" class="btn btn-primary" [disabled]="!formValidation.valid">SUBMIT</button>
+        <button class="btn btn-secondary" (click)="onClear()">CLEAR</button>
+    </section>
     <div class="mb-3">
         <label for="firstName" class="form-label">First Name</label>
         <input formControlName="firstName" type="input" class="form-control" id="firstName" placeholder="First Name">
@@ -31,7 +35,7 @@
         <label for="description" class="form-label">Description</label>
         <textarea formControlName="description" class="form-control" id="description" rows="3"></textarea>
     </div>
-    <select class="form-select" aria-label="T-shirt size" formControlName="size">
+    <select class="form-select mb-3" aria-label="T-shirt size" formControlName="size">
         <option selected>Open this select menu</option>
         <option value="xs">XS</option>
         <option value="s">S</option>
@@ -48,15 +52,10 @@
             </label>
         </div>
     }
-    <div class="form-check">
+    <div class="form-check mt-3">
         <input formControlName="condition" class="form-check-input" type="checkbox" value="" id="condition">
         <label class="form-check-label" for="condition">
             Accept condition
         </label>
     </div>
-    
-    <section>
-        <button type="submit" class="btn btn-primary" [disabled]="!formValidation.valid">SUBMIT</button>
-        <button class="btn btn-secondary" [disabled]="!formValidation.valid">CLEAR</button>
-    </section>
 </form>
