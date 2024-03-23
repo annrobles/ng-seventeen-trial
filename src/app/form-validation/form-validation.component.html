@@ -1,37 +1,37 @@
-<form action="">
+<form [formGroup]="formValidation" (ngSubmit)="onSubmit()" class="w-50">
     <div class="mb-3">
-        <label for="firstNameControl" class="form-label">First Name</label>
-        <input type="input" class="form-control" id="firstNameControl" placeholder="First Name">
+        <label for="firstName" class="form-label">First Name</label>
+        <input formControlName="firstName" type="input" class="form-control" id="firstName" placeholder="First Name">
     </div>
     <div class="mb-3">
-        <label for="middleNameControl" class="form-label">Middle Name</label>
-        <input type="input" class="form-control" id="middleNameControl" placeholder="Middle Name">
+        <label for="middleName" class="form-label">Middle Name</label>
+        <input formControlName="middleName" type="input" class="form-control" id="middleName" placeholder="Middle Name">
     </div>
     <div class="mb-3">
-        <label for="lastNameControl" class="form-label">Last Name</label>
-        <input type="input" class="form-control" id="lastNameControl" placeholder="Last Name">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input formControlName="lastName" type="input" class="form-control" id="lastName" placeholder="Last Name">
     </div>
     <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        <label for="email" class="form-label">Email address</label>
+        <input formControlName="email" type="email" class="form-control" id="email" placeholder="name@example.com">
     </div>
     <div class="mb-3">
-        <label for="phoneControl" class="form-label">Phone</label>
-        <input type="input" class="form-control" id="phoneControl" placeholder="Phone Number">
+        <label for="phone" class="form-label">Phone</label>
+        <input formControlName="phone" type="input" class="form-control" id="phone" placeholder="Phone Number">
     </div>
     <div class="mb-3">
-        <label for="ageControl" class="form-label">Age</label>
-        <input type="input" class="form-control" id="ageControl" placeholder="Age">
+        <label for="age" class="form-label">Age</label>
+        <input formControlName="age" type="input" class="form-control" id="age" placeholder="Age">
     </div>
     <div class="mb-3">
-        <label for="postcodeControl" class="form-label">Postcode</label>
-        <input type="input" class="form-control" id="postcodeControl" placeholder="Postcode">
+        <label for="postcode" class="form-label">Postcode</label>
+        <input formControlName="postcode" type="input" class="form-control" id="postcode" placeholder="Postcode">
     </div>
     <div class="mb-3">
-        <label for="descriptionControlTextarea1" class="form-label">Description</label>
-        <textarea class="form-control" id="descriptionControlTextarea1" rows="3"></textarea>
+        <label for="description" class="form-label">Description</label>
+        <textarea formControlName="description" class="form-control" id="description" rows="3"></textarea>
     </div>
-    <select class="form-select" aria-label="Default select example">
+    <select class="form-select" aria-label="T-shirt size" formControlName="size">
         <option selected>Open this select menu</option>
         <option value="xs">XS</option>
         <option value="s">S</option>
@@ -40,45 +40,23 @@
         <option value="xl">XL</option>
         <option value="xxl">XXL</option>
     </select>
+    @for (color of colors; track $index) {
+        <div class="form-check">
+            <input formControlName="color" class="form-check-input" type="radio" name="color" id="$index" [value]="color">
+            <label class="form-check-label" for="color">
+                {{ color }}
+            </label>
+        </div>
+    }
     <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="whiteRadio" checked>
-        <label class="form-check-label" for="whiteRadio">
-            White
-        </label>
-    </div>
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="blackRadio">
-        <label class="form-check-label" for="blackRadio">
-            Black
-        </label>
-    </div>
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="orangeRadio">
-        <label class="form-check-label" for="orangeRadio">
-            Orange
-        </label>
-    </div>
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="blueRadio">
-        <label class="form-check-label" for="blueRadio">
-            Blue
-        </label>
-    </div>
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="redRadio">
-        <label class="form-check-label" for="redRadio">
-            Red
-        </label>
-    </div>
-    <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="acceptCondition">
-        <label class="form-check-label" for="acceptCondition">
+        <input formControlName="condition" class="form-check-input" type="checkbox" value="" id="condition">
+        <label class="form-check-label" for="condition">
             Accept condition
         </label>
     </div>
     
     <section>
-        <button></button>
-        <button></button>
+        <button type="submit" class="btn btn-primary" [disabled]="!formValidation.valid">SUBMIT</button>
+        <button class="btn btn-secondary" [disabled]="!formValidation.valid">CLEAR</button>
     </section>
 </form>
