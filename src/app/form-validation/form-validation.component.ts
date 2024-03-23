@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AppMaskPhoneDirective } from '../directives/app-mask-phone.directive';
+import { AppMaskPhoneDirective } from '../directives/mask-phone/app-mask-phone.directive';
+import { AppMaskPostcodeDirective } from '../directives/mask-postcode/app-mask-postcode.directive';
 
 @Component({
   selector: 'app-form-validation',
   standalone: true,
-  imports: [ReactiveFormsModule, AppMaskPhoneDirective],
+  imports: [ReactiveFormsModule, AppMaskPhoneDirective, AppMaskPostcodeDirective],
   templateUrl: './form-validation.component.html',
   styleUrl: './form-validation.component.less'
 })
