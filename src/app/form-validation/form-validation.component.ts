@@ -20,7 +20,7 @@ export class FormValidationComponent {
       lastName: new FormControl(null, Validators.required),
       email: new FormControl(null, [Validators.required, Validators.email]),
       phone: new FormControl(null, Validators.required),
-      age: new FormControl(null, Validators.required),
+      age: new FormControl(null, [Validators.required, Validators.min(16), Validators.max(65)]),
       postcode: new FormControl(null, Validators.required),
       description: new FormControl(null, Validators.required),
       size: new FormControl(null, Validators.required),
