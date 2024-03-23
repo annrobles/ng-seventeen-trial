@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AppMaskPhoneDirective } from '../directives/app-mask-phone.directive';
 
 @Component({
   selector: 'app-form-validation',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, AppMaskPhoneDirective],
   templateUrl: './form-validation.component.html',
   styleUrl: './form-validation.component.less'
 })
@@ -36,14 +37,6 @@ export class FormValidationComponent {
     this.formValidation.reset();
     this.formValidation.patchValue({
       color: 'White'
-    })
-  }
-
-  maskPhone(event: any) {
-    const cleaned = event.replace(/\D/g, "");
-    const match = cleaned.match(/^(\d{0,3})(\d{0,3})(\d{0,4})$/);
-    this.formValidation.patchValue({
-      phone: `(${match[1]}) ${match[2]}-${match[3]}`
     })
   }
 }
