@@ -1,1 +1,29 @@
-<p>todo works!</p>
+<div class="text-center">
+    <h2>THINGS TO DO:</h2>
+    <section>
+        @for (task of tasks; track $index) {
+            <div class="todo-task">
+                <div>
+                    <input class="form-check-input" type="checkbox" value="">
+                    <p>{{ task }}</p>                    
+                </div>
+                <div>
+                    <i class="bi bi-trash"></i>
+                </div>
+            </div>
+        } @empty {
+            <div>No items here</div>
+        }
+    </section>
+
+    <hr>
+
+    <div class="todo-footer">
+        <input type="text" class="form-control" id="task"
+        required
+        [(ngModel)]="task" name="task"
+        placeholder="Enter new task">
+
+        <button type="submit" class="btn btn-primary" [disabled]="task === ''" (click)="onSubmit(task)">ADD A TASK</button>
+    </div>
+</div>
