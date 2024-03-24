@@ -1,11 +1,16 @@
 <div class="text-center">
     <h2>THINGS TO DO:</h2>
     <section>
-        @for (task of tasks; track $index) {
+        @for (todo of todoService.todos(); track todo.id) {
             <div class="todo-task">
                 <div>
-                    <input class="form-check-input" type="checkbox" value="">
-                    <p>{{ task }}</p>                    
+                    <input 
+                        class="form-check-input"
+                        type="checkbox" 
+                        [(ngModel)]="todo.isCompleted" 
+                        (change)="todoService.toggleComplete(todo.id)"
+                    >
+                    <p [ngClass]="todo.isCompleted ? 'is-completed' : ''">{{ todo.task }}</p>                    
                 </div>
                 <div>
                     <i class="bi bi-trash"></i>

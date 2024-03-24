@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TodoService } from '../service/todo.service';
 
 @Component({
   selector: 'app-todo',
@@ -11,10 +12,14 @@ import { FormsModule } from '@angular/forms';
 })
 export class TodoComponent {
   task = '';
-  tasks: string[] = [];
+
+  constructor(public todoService: TodoService) {}
 
   onSubmit(value: string) {
-    this.tasks.push(value);
-    this.task = '';
+    if (this.task) {
+      this.todoService.addTask(this.task);
+      this.task = '';
+    }
   }  
 }
+
